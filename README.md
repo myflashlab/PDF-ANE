@@ -7,7 +7,7 @@ you may like to see the ANE in action? [Download demo .apk](https://github.com/m
 **NOTICE**: the demo ANE works only after you hit the "OK" button in the dialog which opens. in your tests make sure that you are NOT calling other ANE methods prior to hitting the "OK" button.
 [Download the ANE](https://github.com/myflashlab/PDF-ANE/tree/master/FD/lib)
 
-# Air Usage:
+# Air Usage
 ```actionscript
 import com.myflashlab.air.extensions.pdf.PdfViewer;
 import com.myflashlab.air.extensions.pdf.PdfViewerEvent;
@@ -28,7 +28,7 @@ private function onStatus(e:PdfViewerEvent):void
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 ```
 
-# Requirements:
+# Requirements
 * Android SDK 10 or higher
 * iOS 6.1 or higher
 
@@ -43,7 +43,7 @@ On iOS side, the dialog will always open but on the Android side, if there is no
 On Android side, you cannot open a pdf file in another app unless the pdf file is somewhere public. which means your file must be copied into ```File.documentsDirectory``` before you can open it. On iOS side, your file can be anywhere! ```File.applicationDirectory```, ```File.applicationStorageDirectory``` or ```File.documentsDirectory``` they all work.
 
 # Tutorials
-[How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)
+[How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
 
 # Changelog
 *Jan 26, 2016 - V2.0*

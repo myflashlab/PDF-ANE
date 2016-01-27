@@ -5,9 +5,9 @@ PDF viewer Adobe Air Native Extension
 * upgraded the Android side to support opening pdf files in any app that can handle these file types
 
 
-*Nov 03, 2015 - V1.9:*
+*Nov 03, 2015 - V1.9*
 * doitflash devs merged into MyFLashLab Team.
 
 
-*May 01, 2013 - V1.0:*
+*May 01, 2013 - V1.0*
 * beginning of the journey!
