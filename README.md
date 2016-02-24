@@ -15,7 +15,8 @@ import com.myflashlab.air.extensions.pdf.PdfViewerEvent;
 var _ex:PdfViewer = new PdfViewer();
 _ex.addEventListener(PdfViewerEvent.STATUS, onStatus);
 
-trace(_ex.run(File.documentsDirectory.resolvePath("sample_pdfViewer_ane.pdf")));
+var result:Boolean = _ex.run(File.documentsDirectory.resolvePath("sample_pdfViewer_ane.pdf"));
+trace(result);
 
 private function onStatus(e:PdfViewerEvent):void
 {
