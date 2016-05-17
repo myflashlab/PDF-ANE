@@ -1,6 +1,9 @@
 # PDF Viewer ANE V2.0.1 (Android+iOS)
 Pdf Viewer Air Native Extension lets you open pdf files right from your Air mobile apps. On both Android and iOS, it will open a dialog and lets you select which program you wish to use for opening the file. 
 
+# asdoc
+[find the latest asdoc for this ANE here.](http://myflashlab.github.io/asdoc/com/myflashlab/air/extensions/pdf/package-detail.html)
+
 # Demo .apk
 you may like to see the ANE in action? [Download demo .apk](https://github.com/myflashlab/PDF-ANE/tree/master/FD/dist)
 
