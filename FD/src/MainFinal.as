@@ -24,9 +24,11 @@ package
 	import flash.events.KeyboardEvent;
 	import flash.events.InvokeEvent;
 	import flash.filesystem.File;
+	import flash.utils.setTimeout;
 	
 	import com.myflashlab.air.extensions.pdf.PdfViewer;
 	import com.myflashlab.air.extensions.pdf.PdfViewerEvent;
+	import com.myflashlab.air.extensions.nativePermissions.PermissionCheck;
 	
 	import com.doitflash.text.modules.MySprite;
 	import com.doitflash.starling.utils.list.List;
@@ -44,6 +46,7 @@ package
 	public class MainFinal extends Sprite 
 	{
 		private var _ex:PdfViewer;
+		private var _exPermissions:PermissionCheck = new PermissionCheck();
 		
 		private const BTN_WIDTH:Number = 150;
 		private const BTN_HEIGHT:Number = 60;
@@ -96,8 +99,7 @@ package
 			_list.vDirection = Direction.TOP_TO_BOTTOM;
 			_list.space = BTN_SPACE;
 			
-			init();
-			onResize();
+			checkPermissions();
 		}
 		
 		private function onInvoke(e:InvokeEvent):void
@@ -149,6 +151,33 @@ package
 			}
 		}
 		
+		private function checkPermissions():void
+		{
+			// first you need to make sure you have access to the Strorage if you are on Android?
+			var permissionState:int = _exPermissions.check(PermissionCheck.SOURCE_STORAGE);
+			
+			if (permissionState == PermissionCheck.PERMISSION_UNKNOWN || permissionState == PermissionCheck.PERMISSION_DENIED)
+			{
+				_exPermissions.request(PermissionCheck.SOURCE_STORAGE, onRequestResult);
+			}
+			else
+			{
+				init();
+			}
+			
+			function onRequestResult($state:int):void
+			{
+				if ($state != PermissionCheck.PERMISSION_GRANTED)
+				{
+					C.log("You did not allow the app the required permissions!");
+				}
+				else
+				{
+					init();
+				}
+			}
+		}
+		
 		private function init():void
 		{
 			/**
@@ -162,9 +191,6 @@ package
 			var dis:File = File.documentsDirectory.resolvePath(src.name);
 			if (dis.exists) dis.deleteFile();
 			if (!dis.exists) src.copyTo(dis, true);
-			
-			// required only if you are a member of the club
-			PdfViewer.clubId = "paypal-address-you-used-to-join-the-club";
 			
 			// initialize the extension
 			_ex = new PdfViewer();
@@ -186,6 +212,8 @@ package
 					C.log("make sure you are correctly referring to the pdf file");
 				}
 			}
+			
+			onResize();
 		}
 		
 		private function onStatus(e:PdfViewerEvent):void
