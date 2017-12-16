@@ -1,5 +1,8 @@
 PDF viewer Adobe Air Native Extension
 
+*Mar 22, 2017 - V2.1.2*
+* Optimized for [ANE-LAB software](https://github.com/myflashlab/ANE-LAB).
+
 *Mar 22, 2017 - V2.1.1*
 * Min iOS version to support this ANE is 8.0 from now on.
 * Even the iOS side now is also dependent on the OverrideAir.ane

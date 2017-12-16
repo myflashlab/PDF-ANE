@@ -1,14 +1,10 @@
-# PDF Viewer ANE V2.1.1 (Android+iOS)
+# PDF Viewer ANE V2.1.2 (Android+iOS)
 Pdf Viewer Air Native Extension lets you open pdf files right from your Air mobile apps. On both Android and iOS, it will open a dialog and lets you select which program you wish to use for opening the file. 
 
 # asdoc
 [find the latest asdoc for this ANE here.](http://myflashlab.github.io/asdoc/com/myflashlab/air/extensions/pdf/package-detail.html)
 
-# Demo .apk
-you may like to see the ANE in action? [Download demo .apk](https://github.com/myflashlab/PDF-ANE/tree/master/FD/dist)
-
-**NOTICE**: the demo ANE works only after you hit the "OK" button in the dialog which opens. in your tests make sure that you are NOT calling other ANE methods prior to hitting the "OK" button.
-[Download the ANE](https://github.com/myflashlab/PDF-ANE/tree/master/FD/lib)
+[Download demo ANE](https://github.com/myflashlab/PDF-ANE/tree/master/AIR/lib)
 
 # Air Usage
 ```actionscript
@@ -33,8 +29,9 @@ private function onStatus(e:PdfViewerEvent):void
 ```
 
 # Requirements
-* Android SDK 10 or higher
-* iOS 8.0 or higher
+* Android SDK 15 or higher
+* iOS 9.0 or higher
+* AIR SDK 27+
 
 # Commercial Version
 http://www.myflashlabs.com/product/pdf-reader-ane-adobe-air-native-extension/
@@ -50,6 +47,9 @@ On Android side, you cannot open a pdf file in another app unless the pdf file i
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
 
 # Changelog
+*Mar 22, 2017 - V2.1.2*
+* Optimized for [ANE-LAB software](https://github.com/myflashlab/ANE-LAB).
+
 *Mar 22, 2017 - V2.1.1*
 * Min iOS version to support this ANE is 8.0 from now on.
 * Even the iOS side now is also dependent on the OverrideAir.ane
