@@ -2,18 +2,12 @@ package
 {
 	import flash.desktop.NativeApplication;
 	import flash.desktop.SystemIdleMode;
-	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.events.StageOrientationEvent;
-	import flash.events.StatusEvent;
-	import flash.net.navigateToURL;
-	import flash.net.URLRequest;
 	import flash.text.AntiAliasType;
-	import flash.text.AutoCapitalize;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
@@ -24,11 +18,8 @@ package
 	import flash.events.KeyboardEvent;
 	import flash.events.InvokeEvent;
 	import flash.filesystem.File;
-	import flash.utils.setTimeout;
 	
-	import com.myflashlab.air.extensions.pdf.PdfViewer;
-	import com.myflashlab.air.extensions.pdf.PdfViewerEvent;
-	import com.myflashlab.air.extensions.nativePermissions.PermissionCheck;
+	import com.myflashlab.air.extensions.pdf.*;
 	import com.myflashlab.air.extensions.dependency.OverrideAir;
 	
 	import com.doitflash.text.modules.MySprite;
@@ -47,7 +38,6 @@ package
 	public class MainFinal extends Sprite 
 	{
 		private var _ex:PdfViewer;
-		private var _exPermissions:PermissionCheck = new PermissionCheck();
 		
 		private const BTN_WIDTH:Number = 150;
 		private const BTN_HEIGHT:Number = 60;
@@ -100,7 +90,7 @@ package
 			_list.vDirection = Direction.TOP_TO_BOTTOM;
 			_list.space = BTN_SPACE;
 			
-			checkPermissions();
+			init();
 		}
 		
 		private function onInvoke(e:InvokeEvent):void
@@ -152,47 +142,9 @@ package
 			}
 		}
 		
-		private function checkPermissions():void
-		{
-			// first you need to make sure you have access to the Strorage if you are on Android?
-			var permissionState:int = _exPermissions.check(PermissionCheck.SOURCE_STORAGE);
-			
-			if (permissionState == PermissionCheck.PERMISSION_UNKNOWN || permissionState == PermissionCheck.PERMISSION_DENIED)
-			{
-				_exPermissions.request(PermissionCheck.SOURCE_STORAGE, onRequestResult);
-			}
-			else
-			{
-				init();
-			}
-			
-			function onRequestResult($state:int):void
-			{
-				if ($state != PermissionCheck.PERMISSION_GRANTED)
-				{
-					C.log("You did not allow the app the required permissions!");
-				}
-				else
-				{
-					init();
-				}
-			}
-		}
-		
 		private function myDebuggerDelegate($ane:String, $class:String, $msg:String):void
 		{
-			
-			trace("------------------");
-			trace("$ane = " + $ane);
-			trace("$class = " + $class);
-			trace("$msg = " + $msg);
-			trace("------------------");
-			
-			C.log("------------------");
-			C.log("$ane = " + $ane);
-			C.log("$class = " + $class);
-			C.log("$msg = " + $msg);
-			C.log("------------------");
+			trace($ane + "(" + $class + ")" + " " + $msg);
 		}
 		
 		private function init():void
@@ -200,16 +152,8 @@ package
 			// remove this line in production build or pass null as the delegate
 			OverrideAir.enableDebugger(myDebuggerDelegate);
 			
-			/**
-			 * 	On Android side, you cannot open a pdf file in another app unless the pdf file is somewhere public. which means your file
-			 * 	must be copied into File.documentsDirectory before you can open it.
-			 * 	
-			 * 	On iOS side, your file can be anywhere! File.applicationDirectory, File.applicationStorageDirectory or File.documentsDirectory
-			 * 	they all work.
-			 */
 			var src:File = File.applicationDirectory.resolvePath("sample_pdfViewer_ane.pdf");
-			var dis:File = File.documentsDirectory.resolvePath(src.name);
-			if (dis.exists) dis.deleteFile();
+			var dis:File = File.cacheDirectory.resolvePath(src.name);
 			if (!dis.exists) src.copyTo(dis, true);
 			
 			// initialize the extension
@@ -223,14 +167,7 @@ package
 			
 			function open(e:MouseEvent):void
 			{
-				if (dis.exists)
-				{
-					C.log("trying to open pdf file: " + _ex.run(dis));
-				}
-				else
-				{
-					C.log("make sure you are correctly referring to the pdf file");
-				}
+				C.log("trying to open pdf file: " + _ex.run(dis));
 			}
 			
 			onResize();
@@ -244,7 +181,7 @@ package
 			if (e.param == "onError")
 			{
 				C.log("If you are receiving \"onError\" message, the reason might be one of the followings\n");
-				C.log("1) are you sure the File exists? you should check it before sending it into the ANE");
+				C.log("1) are you sure the File exists and is in \"File.cacheDirectory\" location? you should check it before sending it into the ANE");
 				C.log("2) on Android, maybe there is no application to be able to open PDF files! you should promote users to install Acrobat Reader or other pdf readers apps on Google Play");
 			}
 		}

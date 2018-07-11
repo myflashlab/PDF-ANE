@@ -1,4 +1,4 @@
-# PDF Viewer ANE V2.1.2 (Android+iOS)
+# PDF Viewer ANE V2.2.0 (Android+iOS)
 Pdf Viewer Air Native Extension lets you open pdf files right from your Air mobile apps. On both Android and iOS, it will open a dialog and lets you select which program you wish to use for opening the file. 
 
 # asdoc
@@ -8,13 +8,12 @@ Pdf Viewer Air Native Extension lets you open pdf files right from your Air mobi
 
 # Air Usage
 ```actionscript
-import com.myflashlab.air.extensions.pdf.PdfViewer;
-import com.myflashlab.air.extensions.pdf.PdfViewerEvent;
+import com.myflashlab.air.extensions.pdf.*;
 
 var _ex:PdfViewer = new PdfViewer();
 _ex.addEventListener(PdfViewerEvent.STATUS, onStatus);
 
-var result:Boolean = _ex.run(File.documentsDirectory.resolvePath("sample_pdfViewer_ane.pdf"));
+var result:Boolean = _ex.run(File.cacheDirectory.resolvePath("sample_pdfViewer_ane.pdf"));
 trace(result);
 
 private function onStatus(e:PdfViewerEvent):void
@@ -25,28 +24,62 @@ private function onStatus(e:PdfViewerEvent):void
 
 # Air .xml manifest
 ```xml
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-sdk android:targetSdkVersion="26"/>
+
+<!--
+	Change "[YOUR_PACKAGE_ID]" to your own applicationID but keep
+	".provider" at the end. [YOUR_PACKAGE_ID].provider
+-->
+<provider
+    android:name="android.support.v4.content.FileProvider"
+    android:authorities="[YOUR_PACKAGE_ID].provider"
+    android:exported="false"
+    android:grantUriPermissions="true">
+    <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/provider_paths"/>
+</provider>
 ```
 
 # Requirements
 * Android SDK 15 or higher
 * iOS 9.0 or higher
-* AIR SDK 27+
+* AIR SDK 29+
 
 # Commercial Version
 http://www.myflashlabs.com/product/pdf-reader-ane-adobe-air-native-extension/
 
-![PDF Viewer ANE](http://www.myflashlabs.com/wp-content/uploads/2015/11/product_adobe-air-ane-extension-pdf-1-595x738.jpg)
+![PDF Viewer ANE](https://www.myflashlabs.com/wp-content/uploads/2015/11/product_adobe-air-ane-extension-pdf-1-595x738.jpg)
 
 # Tech Details
 On iOS side, the dialog will always open but on the Android side, if there is no application installed on the device to be able to handle PDF files, the extension will return false. So you should probably promote that user to install Acrobat reader app or any other application that can handle PDF files.
 
-On Android side, you cannot open a pdf file in another app unless the pdf file is somewhere public. which means your file must be copied into ```File.documentsDirectory``` before you can open it. On iOS side, your file can be anywhere! ```File.applicationDirectory```, ```File.applicationStorageDirectory``` or ```File.documentsDirectory``` they all work.
+On Android side, your pdf file must be copied to ```File.cacheDirectory```. On iOS side, your file can be anywhere! ```File.applicationDirectory```, ```File.applicationStorageDirectory``` or ```File.documentsDirectory``` they all work.
 
 # Tutorials
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
 
 # Changelog
+*Jul 11, 2018 - V2.2.0*
+* On Android, supporting targetSdkVersion is now 26 like below. Lower versions work also but you are recommended to use V26
+```xml
+<uses-sdk android:targetSdkVersion="26"/>
+```
+* The [permission ANE](https://github.com/myflashlab/PermissionCheck-ANE/) is no longer requierd and you no longer need to ask for external access. **Remove** the following tag from your manifest: ```<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>```
+* On Android, pdf files must be copied to ```File.cacheDirectory``` from now on. make sure you are updating your AS3 code.
+* On Android, you must add the following ```<provider>``` tag.
+```xml
+<provider
+    android:name="android.support.v4.content.FileProvider"
+    android:authorities="[YOUR_PACKAGE_ID].provider"
+    android:exported="false"
+    android:grantUriPermissions="true">
+    <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/provider_paths"/>
+</provider>
+```
+
 *Mar 22, 2017 - V2.1.2*
 * Optimized for [ANE-LAB software](https://github.com/myflashlab/ANE-LAB).
 
