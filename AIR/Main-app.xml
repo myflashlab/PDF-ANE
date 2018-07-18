@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <application xmlns="http://ns.adobe.com/air/application/29.0">
   <id>com.doitflash.exPdf</id>
-  <versionNumber>2.2.0</versionNumber>
+  <versionNumber>2.2.1</versionNumber>
   <supportedProfiles>mobileDevice</supportedProfiles>
   <filename>exPdf</filename>
   <name>Pdf Viewer</name>
@@ -12,20 +12,6 @@
 	
 		<uses-permission android:name="android.permission.INTERNET"/>
 		<uses-sdk android:targetSdkVersion="26"/>
-
-		<!--
-		    Change "air.com.doitflash.exPdf" to your own applicationID but keep
-		    ".provider" at the end. [your-app-id].provider
-		-->
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="air.com.doitflash.exPdf.provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
-        </provider>
 		
 		<application>
 			
@@ -40,6 +26,20 @@
 					<category android:name="android.intent.category.DEFAULT" />
 				</intent-filter>
 			</activity>
+
+			<!--
+                Change "air.com.doitflash.exPdf" to your own applicationID but keep
+                ".provider" at the end. [your-app-id].provider
+            -->
+            <provider
+                android:name="com.myflashlabs.pdfViewer.AnePdfViewerProvider"
+                android:authorities="air.com.doitflash.exPdf.provider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+                <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/pdf_viewer_ane_provider_paths"/>
+            </provider>
 			
 		</application>
 		

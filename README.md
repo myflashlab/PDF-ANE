@@ -1,4 +1,4 @@
-# PDF Viewer ANE V2.2.0 (Android+iOS)
+# PDF Viewer ANE V2.2.1 (Android+iOS)
 Pdf Viewer Air Native Extension lets you open pdf files right from your Air mobile apps. On both Android and iOS, it will open a dialog and lets you select which program you wish to use for opening the file. 
 
 # asdoc
@@ -26,19 +26,28 @@ private function onStatus(e:PdfViewerEvent):void
 ```xml
 <uses-sdk android:targetSdkVersion="26"/>
 
-<!--
-	Change "[YOUR_PACKAGE_ID]" to your own applicationID but keep
-	".provider" at the end. [YOUR_PACKAGE_ID].provider
--->
-<provider
-    android:name="android.support.v4.content.FileProvider"
-    android:authorities="[YOUR_PACKAGE_ID].provider"
-    android:exported="false"
-    android:grantUriPermissions="true">
-    <meta-data
-        android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/provider_paths"/>
-</provider>
+<application>
+
+    <!--
+        Other Activities, services, or providers of your Android app.
+    -->
+
+
+    <!--
+        Change [YOUR_PACKAGE_ID] to your own applicationID but keep
+        ".provider" at the end. [YOUR_PACKAGE_ID].provider
+    -->
+    <provider
+        android:name="com.myflashlabs.pdfViewer.AnePdfViewerProvider"
+        android:authorities="[YOUR_PACKAGE_ID].provider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/pdf_viewer_ane_provider_paths"/>
+    </provider>
+
+<application>
 ```
 
 # Requirements
@@ -60,6 +69,26 @@ On Android side, your pdf file must be copied to ```File.cacheDirectory```. On i
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
 
 # Changelog
+*Jul 18, 2018 - V2.2.1*
+* Fixed conflict between this ANE and the videoPlayer ANE caused by the <provider> tag. We have now overwriten the Provider class so the conflict will be correctly bypassed.
+* make sure the ```<provider>``` tag is under the ```<application>``` tag in the Android part.
+* Also changed the provider path xml file name to ```@xml/pdf_viewer_ane_provider_paths```. Make sure you are using this name rather than the older one.
+```xml
+<!--
+    Change "[YOUR_PACKAGE_ID]" to your own applicationID but keep
+    ".provider" at the end. [YOUR_PACKAGE_ID].provider
+-->
+<provider
+    android:name="com.myflashlabs.pdfViewer.AnePdfViewerProvider"
+    android:authorities="[YOUR_PACKAGE_ID].provider"
+    android:exported="false"
+    android:grantUriPermissions="true">
+    <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/pdf_viewer_ane_provider_paths"/>
+</provider>
+```
+
 *Jul 11, 2018 - V2.2.0*
 * On Android, supporting targetSdkVersion is now 26 like below. Lower versions work also but you are recommended to use V26
 ```xml
