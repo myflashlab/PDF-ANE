@@ -1,5 +1,7 @@
-This ANE is dependent on the following ANEs. You need to add these to your project too.
-androidSupport.ane
+This ANE is dependent on the following ANEs.
+
+androidSupport-core.ane
+androidSupport-v4.ane
 overrideAir.ane
 
 Download from here: https://github.com/myflashlab/common-dependencies-ANE

@@ -1,5 +1,8 @@
 PDF viewer Adobe Air Native Extension
 
+*Sep 23, 2018 - V2.2.2*
+* removed androidSupport dependency then added ```androidSupport-core.ane``` and ```androidSupport-v4.ane```.
+
 *Jul 18, 2018 - V2.2.1*
 * Fixed conflict between this ANE and the videoPlayer ANE caused by the <provider> tag. We have now overwriten the Provider class so the conflict will be correctly bypassed.
 * make sure the ```<provider>``` tag is under the ```<application>``` tag in the Android part.

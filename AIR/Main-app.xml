@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<application xmlns="http://ns.adobe.com/air/application/29.0">
+<application xmlns="http://ns.adobe.com/air/application/30.0">
   <id>com.doitflash.exPdf</id>
-  <versionNumber>2.2.1</versionNumber>
+  <versionNumber>2.2.2</versionNumber>
   <supportedProfiles>mobileDevice</supportedProfiles>
   <filename>exPdf</filename>
   <name>Pdf Viewer</name>
@@ -115,8 +115,9 @@
 		
 		<extensionID>com.myflashlab.air.extensions.pdfViewer</extensionID>
 		
-		<!-- The following dependency ANEs are only required when compiling for Android -->
-		<extensionID>com.myflashlab.air.extensions.dependency.androidSupport</extensionID>
+		<!-- dependency ANEs -->
+		<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>
+		<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>
 		<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
 		
 	</extensions>

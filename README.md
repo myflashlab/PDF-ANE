@@ -1,4 +1,4 @@
-# PDF Viewer ANE V2.2.1 (Android+iOS)
+# PDF Viewer ANE V2.2.2 (Android+iOS)
 Pdf Viewer Air Native Extension lets you open pdf files right from your Air mobile apps. On both Android and iOS, it will open a dialog and lets you select which program you wish to use for opening the file. 
 
 # asdoc
@@ -25,7 +25,6 @@ private function onStatus(e:PdfViewerEvent):void
 # Air .xml manifest
 ```xml
 <uses-sdk android:targetSdkVersion="26"/>
-
 <application>
 
     <!--
@@ -48,12 +47,26 @@ private function onStatus(e:PdfViewerEvent):void
     </provider>
 
 <application>
+
+
+
+
+<extensions>
+
+	<extensionID>com.myflashlab.air.extensions.pdfViewer</extensionID>
+
+	<!-- dependency ANEs -->
+	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>
+	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>
+	<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
+
+</extensions>
 ```
 
 # Requirements
-* Android SDK 15 or higher
-* iOS 9.0 or higher
-* AIR SDK 29+
+* Android SDK 15+
+* iOS 9.0+
+* AIR SDK 30+
 
 # Commercial Version
 http://www.myflashlabs.com/product/pdf-reader-ane-adobe-air-native-extension/
@@ -69,6 +82,9 @@ On Android side, your pdf file must be copied to ```File.cacheDirectory```. On i
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
 
 # Changelog
+*Sep 23, 2018 - V2.2.2*
+* removed androidSupport dependency then added ```androidSupport-core.ane``` and ```androidSupport-v4.ane```.
+
 *Jul 18, 2018 - V2.2.1*
 * Fixed conflict between this ANE and the videoPlayer ANE caused by the <provider> tag. We have now overwriten the Provider class so the conflict will be correctly bypassed.
 * make sure the ```<provider>``` tag is under the ```<application>``` tag in the Android part.
