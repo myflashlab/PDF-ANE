@@ -1,4 +1,4 @@
-# PDF Viewer ANE V2.2.2 (Android+iOS)
+# PDF Viewer ANE V2.2.3 (Android+iOS)
 Pdf Viewer Air Native Extension lets you open pdf files right from your Air mobile apps. On both Android and iOS, it will open a dialog and lets you select which program you wish to use for opening the file. 
 
 # asdoc
@@ -82,6 +82,10 @@ On Android side, your pdf file must be copied to ```File.cacheDirectory```. On i
 [How to embed ANEs into **FlashBuilder**, **FlashCC** and **FlashDevelop**](https://www.youtube.com/watch?v=Oubsb_3F3ec&list=PL_mmSjScdnxnSDTMYb1iDX4LemhIJrt1O)  
 
 # Changelog
+*Nov 18, 2018 - V2.2.3*
+* Works with OverrideAir ANE V5.6.1 or higher
+* Works with ANELAB V1.1.26 or higher
+
 *Sep 23, 2018 - V2.2.2*
 * removed androidSupport dependency then added ```androidSupport-core.ane``` and ```androidSupport-v4.ane```.
 

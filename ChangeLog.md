@@ -1,5 +1,9 @@
 PDF viewer Adobe Air Native Extension
 
+*Nov 18, 2018 - V2.2.3*
+* Works with OverrideAir ANE V5.6.1 or higher
+* Works with ANELAB V1.1.26 or higher
+
 *Sep 23, 2018 - V2.2.2*
 * removed androidSupport dependency then added ```androidSupport-core.ane``` and ```androidSupport-v4.ane```.
 
