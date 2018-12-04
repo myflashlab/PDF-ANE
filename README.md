@@ -69,9 +69,9 @@ private function onStatus(e:PdfViewerEvent):void
 * AIR SDK 30+
 
 # Commercial Version
-http://www.myflashlabs.com/product/pdf-reader-ane-adobe-air-native-extension/
+https://www.myflashlabs.com/product/pdf-reader-ane-adobe-air-native-extension/
 
-![PDF Viewer ANE](https://www.myflashlabs.com/wp-content/uploads/2015/11/product_adobe-air-ane-extension-pdf-1-595x738.jpg)
+[![PDF Viewer ANE](https://www.myflashlabs.com/wp-content/uploads/2015/11/product_adobe-air-ane-extension-pdf-2018-595x738.jpg)](https://www.myflashlabs.com/product/pdf-reader-ane-adobe-air-native-extension/)
 
 # Tech Details
 On iOS side, the dialog will always open but on the Android side, if there is no application installed on the device to be able to handle PDF files, the extension will return false. So you should probably promote that user to install Acrobat reader app or any other application that can handle PDF files.
