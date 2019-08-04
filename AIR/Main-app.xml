@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<application xmlns="http://ns.adobe.com/air/application/31.0">
+<application xmlns="http://ns.adobe.com/air/application/32.0">
   <id>com.doitflash.exPdf</id>
-  <versionNumber>2.2.3</versionNumber>
+  <versionNumber>2.2.31</versionNumber>
   <supportedProfiles>mobileDevice</supportedProfiles>
   <filename>exPdf</filename>
   <name>Pdf Viewer</name>
@@ -11,7 +11,7 @@
 	<manifest android:installLocation="auto">
 	
 		<uses-permission android:name="android.permission.INTERNET"/>
-		<uses-sdk android:targetSdkVersion="26"/>
+		<uses-sdk android:targetSdkVersion="28"/>
 		
 		<application>
 			
@@ -50,13 +50,11 @@
 	
 	
 <iPhone>
-    <!--https://developer.apple.com/library/ios/documentation/general/reference/infoplistkeyreference/Articles/iPhoneOSKeys.html-->
-    <!--http://help.adobe.com/en_US/air/build/WSfffb011ac560372f7e64a7f12cd2dd1867-8000.html-->
     <InfoAdditions><![CDATA[
 	
-		<!--iOS 8.0 or higher can support this ANE-->
+		<!--iOS 10.0 or higher can support this ANE-->
 		<key>MinimumOSVersion</key>
-		<string>8.0</string>
+		<string>10.0</string>
 			
 		<key>UIStatusBarStyle</key>
 		<string>UIStatusBarStyleBlackOpaque</string>

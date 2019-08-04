@@ -21,7 +21,7 @@ private function onStatus(e:PdfViewerEvent):void
 
 # Air .xml manifest
 ```xml
-<uses-sdk android:targetSdkVersion="26"/>
+<uses-sdk android:targetSdkVersion="28"/>
 <application>
 
     <!--
@@ -62,7 +62,7 @@ private function onStatus(e:PdfViewerEvent):void
 
 # Requirements
 * Android SDK 15+
-* iOS 9.0+
+* iOS 10.0+
 * AIR SDK 30+
 
 # Commercial Version
