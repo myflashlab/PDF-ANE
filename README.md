@@ -53,17 +53,17 @@ private function onStatus(e:PdfViewerEvent):void
 	<extensionID>com.myflashlab.air.extensions.pdfViewer</extensionID>
 
 	<!-- dependency ANEs -->
-	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.core</extensionID>
-	<extensionID>com.myflashlab.air.extensions.dependency.androidSupport.v4</extensionID>
+	<extensionID>com.myflashlab.air.extensions.dependency.androidx.core</extensionID>
+	<extensionID>com.myflashlab.air.extensions.dependency.androidx.lifecycle</extensionID>
 	<extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
 
 </extensions>
 ```
 
 # Requirements
-* Android SDK 15+
+* Android SDK 19+
 * iOS 10.0+
-* AIR SDK 30+
+* AIR SDK 33+
 
 # Commercial Version
 https://www.myflashlabs.com/product/pdf-reader-ane-adobe-air-native-extension/
