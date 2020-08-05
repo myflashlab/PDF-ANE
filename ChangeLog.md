@@ -1,4 +1,8 @@
-PDF viewer Adobe Air Native Extension
+# PDF viewer Adobe Air Native Extension
+
+*Aug 01, 2020 - v4.0.0*
+- Upgrade dependencies to the latest versions.
+- Fixed some minor issues and refactor native codes.
 
 *Apr 05, 2020 - V3.0.0*
 - Added Androidx dependencies instead of android support
